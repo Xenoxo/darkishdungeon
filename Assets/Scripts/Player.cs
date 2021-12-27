@@ -22,9 +22,8 @@ public class Player : MonoBehaviour
     {
         float xDirection = Input.GetAxisRaw("Horizontal") * speed_;
         float zDirection = Input.GetAxisRaw("Vertical") * speed_;
-        float diagDirection = zDirection + xDirection;
 
-        Vector3 moveDirection = new Vector3(diagDirection, 0.0f, diagDirection);
+        Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
 
         transform.position += moveDirection;
     }
