@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    GameObject playerModel;
+    [SerializeField]
+    float depth = 0.0f;
 
     private float speed_ = 0.05f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +22,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
+        Looking();
     }
 
     void Movement()
@@ -26,5 +33,13 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
 
         transform.position += moveDirection;
+    }
+
+    void Looking()
+    {
+        var mousePos = Input.mousePosition;
+        var wantedPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, depth));
+
+        playerModel.transform.LookAt(wantedPos);
     }
 }
