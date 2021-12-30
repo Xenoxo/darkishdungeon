@@ -9,20 +9,23 @@ public class Player : MonoBehaviour
     [SerializeField]
     float depth = 0.0f;
 
-    private float speed_ = 0.05f;
+    [SerializeField] 
+    private LayerMask groundMask;
 
+    private float speed_ = 0.05f;
+    private Camera mainCamera;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-        Looking();
+        Aim();
     }
 
     void Movement()
@@ -35,11 +38,37 @@ public class Player : MonoBehaviour
         transform.position += moveDirection;
     }
 
-    void Looking()
+    private void Aim()
     {
-        var mousePos = Input.mousePosition;
-        var wantedPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, depth));
+        var (success, position) = GetMousePosition();
+        if (success)
+        {
+            // Calculate the direction
+            var direction = position - transform.position;
 
-        playerModel.transform.LookAt(wantedPos);
+            // You might want to delete this line.
+            // Ignore the height difference.
+            direction.y = 0;
+
+            // Make the transform look in the direction.
+            transform.forward = direction;
+        }
+    }
+
+
+    private (bool success, Vector3 position) GetMousePosition()
+    {
+        var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
+        {
+            // The Raycast hit something, return with the position.
+            return (success: true, position: hitInfo.point);
+        }
+        else
+        {
+            // The Raycast did not hit anything.
+            return (success: false, position: Vector3.zero);
+        }
     }
 }
