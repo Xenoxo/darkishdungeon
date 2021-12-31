@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 1894105653}
   - component: {fileID: 1894105652}
   - component: {fileID: 1894105651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,5 +479,9 @@ PrefabInstance:
       propertyPath: playerModel
       value: 
       objectReference: {fileID: 696765271}
+    - target: {fileID: 2876951052938414544, guid: 2cd983225de3d5a4f89ef5bda481f506, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd983225de3d5a4f89ef5bda481f506, type: 3}
