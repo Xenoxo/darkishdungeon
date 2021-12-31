@@ -51,7 +51,8 @@ public class Player : MonoBehaviour
             direction.y = 0;
 
             // Make the transform look in the direction.
-            transform.forward = direction;
+            
+            playerModel.transform.forward = direction;
         }
     }
 
