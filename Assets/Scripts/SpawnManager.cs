@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
         {
             //create enemy from enemy prefab
             float distance = randomSphere();
-            while (distance < 4)
+            while (distance < 8)
             {
                 distance = randomSphere();
             }
@@ -66,7 +66,9 @@ public class SpawnManager : MonoBehaviour
 
         spawnPoint = new Vector3(posX, 0, posZ);
 
-        //return distance from spawnpoint to 
-        return Vector3.Distance(spawnPoint, playerObject.transform.position);
+        //return distance from spawnpoint to player's position.
+        //calling it by itself returns a point slightly away from player, so the other vector3 is and adjustment to the comparison point
+        Vector3 playerPos = playerObject.transform.position + new Vector3(2f, 0, -7f);
+        return Vector3.Distance(spawnPoint, playerPos);
     }
 }
