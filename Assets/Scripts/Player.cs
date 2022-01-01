@@ -6,8 +6,6 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     GameObject playerModel;
-    [SerializeField]
-    float depth = 0.0f;
 
     [SerializeField] 
     private LayerMask groundMask;
