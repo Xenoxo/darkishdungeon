@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0792814410df3564c9fa643350f0cb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4444823627000619991, guid: e6699016c73368e49881768f83f57a9c, type: 3}
-  playerObject: {fileID: 707756874}
-  spawnTimer: 0.0001
-  spawnLimit: 1000
+  enemyPrefab: {fileID: 3708652280258168545, guid: 470582adb6c5f764492cf61d5d928b64, type: 3}
+  playerObject: {fileID: 696765271}
+  spawnTimer: 1
+  spawnLimit: 100
 --- !u!4 &359059013
 Transform:
   m_ObjectHideFlags: 0
@@ -299,11 +299,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &707756874 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 710149705515179633, guid: 2cd983225de3d5a4f89ef5bda481f506, type: 3}
-  m_PrefabInstance: {fileID: 710149707486687080}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +652,10 @@ PrefabInstance:
     - target: {fileID: 710149705515179633, guid: 2cd983225de3d5a4f89ef5bda481f506, type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 710149705515179633, guid: 2cd983225de3d5a4f89ef5bda481f506, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 710149705515179634, guid: 2cd983225de3d5a4f89ef5bda481f506, type: 3}
       propertyPath: m_RootOrder

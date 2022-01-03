@@ -13,6 +13,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private int spawnLimit = 10;
 
+    private int spacing = 1;
+
     int enemyCount = 0;
     Vector3 spawnPoint;
 
@@ -44,7 +46,7 @@ public class SpawnManager : MonoBehaviour
         {
             //create enemy from enemy prefab
             float distance = randomSphere();
-            while (distance < 8)
+            while (distance < spacing)
             {
                 distance = randomSphere();
             }
@@ -64,11 +66,23 @@ public class SpawnManager : MonoBehaviour
         float posX = spawnPoint.x;
         float posZ = spawnPoint.z;
 
-        spawnPoint = new Vector3(posX, 0, posZ);
+        spawnPoint = new Vector3(posX, -1.75f, posZ);
 
         //return distance from spawnpoint to player's position.
         //calling it by itself returns a point slightly away from player, so the other vector3 is and adjustment to the comparison point
-        Vector3 playerPos = playerObject.transform.position + new Vector3(2f, 0, -7f);
-        return Vector3.Distance(spawnPoint, playerPos);
+        Vector3 playerPos = playerObject.transform.localPosition;
+        float distance = Vector3.Distance(spawnPoint, playerPos);
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            if(Vector3.Distance(spawnPoint, enemy.transform.localPosition) < spacing)
+            {
+                distance = Vector3.Distance(spawnPoint, enemy.transform.localPosition);
+            }
+        }
+
+        return distance;
     }
 }

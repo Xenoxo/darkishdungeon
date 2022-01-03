@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     [SerializeField]
     GameObject playerObject;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
-    {
-        playerObject.transform.forward = playerObject.transform.position;
+    {   
+        transform.forward = playerObject.transform.localPosition;
     }
 }
