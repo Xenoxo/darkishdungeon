@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     GameObject playerObject;
+    [SerializeField]
+    GameObject enemyModel;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        transform.forward = playerObject.transform.localPosition;
+        enemyModel.transform.forward = playerObject.transform.localPosition;
     }
 }
